@@ -4,30 +4,44 @@ import { useState } from 'react';
 
 import { BaseColaboradores } from './BaseColaboradores';
 
-const colaboradores = [...BaseColaboradores]
 //ANOTAR
 
 function App() {
-  const [input_filter, setInput_filter] = useState('');
+  
+  const [input_nombre, setInput_nombre] = useState('');
+  const [input_correo, setInput_correo] = useState('');
+  const [colaboradores, setColaboradores] = useState([...BaseColaboradores]);
 
-  const handleInputFilter = (e)=>{
-    setInput_filter(e.target.value)
-    console.log(input_filter)
+
+  const handleInputNombre = (e) => {
+    setInput_nombre(e.target.value)
   }
 
+  const handleInputCorreo = (e) => {
+    setInput_correo(e.target.value)
+    console.log(input_correo)
+  }
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setColaboradores([...colaboradores, {nombre: input_nombre, correo: input_correo}]);
+    setInput_nombre('');
+    setInput_correo('');
+  }
+  
   return (
     <div className="App">
       <div className='container-fluid bg-dark text-light d-flex py-3'>
         <h3 className='ms-5'>Buscador de Colaboradores</h3>
-        <input className='ms-auto text-center' placeholder='Busca un colaborador' onChange={handleInputFilter}></input>
+        <input className='ms-auto text-center' placeholder='Busca un colaborador'></input>
       </div>
       <div className='container my-5'>
-        <form>
+        <form onSubmit={handleSubmit}>
           <label>Nombre del colaborador</label>
-          <input className='form-control' placeholder='Ingresa el nombre del colaborador'></input>
+          <input className='form-control' placeholder='Ingresa el nombre del colaborador' onChange={handleInputNombre} value={input_nombre}></input>
           <br></br>
           <label>Correo del colaborador</label>
-          <input className='form-control' placeholder='Ingresa el correo del colaborador'></input>
+          <input className='form-control' placeholder='Ingresa el correo del colaborador' onChange={handleInputCorreo} value={input_correo}></input>
           <br></br>
           <button className='btn btn-primary'>Agregar el colaborador</button>
         </form> 
@@ -37,16 +51,7 @@ function App() {
         <h2>Listado de colaboradores</h2>
         <ul>
           {
-            colaboradores.filter((colaborador) =>
-            {
-              if (input_filter !== '') {
-                colaborador.nombre.includes(input_filter)
-                return colaborador;
-              } else {
-                return colaborador;
-              }
-            }
-            ).map((colaborador, index) => 
+            colaboradores.map((colaborador, index) => 
             {return(<li key={index}>{colaborador.nombre} - {colaborador.correo}</li>)})
           }
         </ul>
