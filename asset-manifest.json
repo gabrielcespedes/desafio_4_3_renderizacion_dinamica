@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/desafio_4_3_renderizacion_dinamica/static/css/main.e906e9c4.css",
+    "main.js": "/desafio_4_3_renderizacion_dinamica/static/js/main.ab59a904.js",
+    "static/js/787.8ba6c1c4.chunk.js": "/desafio_4_3_renderizacion_dinamica/static/js/787.8ba6c1c4.chunk.js",
+    "index.html": "/desafio_4_3_renderizacion_dinamica/index.html",
+    "main.e906e9c4.css.map": "/desafio_4_3_renderizacion_dinamica/static/css/main.e906e9c4.css.map",
+    "main.ab59a904.js.map": "/desafio_4_3_renderizacion_dinamica/static/js/main.ab59a904.js.map",
+    "787.8ba6c1c4.chunk.js.map": "/desafio_4_3_renderizacion_dinamica/static/js/787.8ba6c1c4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e906e9c4.css",
+    "static/js/main.ab59a904.js"
+  ]
+}
