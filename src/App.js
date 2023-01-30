@@ -11,6 +11,7 @@ function App() {
   const [input_nombre, setInput_nombre] = useState('');
   const [input_correo, setInput_correo] = useState('');
   const [colaboradores, setColaboradores] = useState([...BaseColaboradores]);
+  const [input_filter, setInput_filter] = useState('');
 
 
   const handleInputNombre = (e) => {
@@ -29,11 +30,15 @@ function App() {
     setInput_correo('');
   }
   
+  const handleInputFilter = (e) => {
+    setInput_filter(e.target.value)
+  }
+
   return (
     <div className="App">
       <div className='container-fluid bg-dark text-light d-flex py-3'>
         <h3 className='ms-5'>Buscador de Colaboradores</h3>
-        <input className='ms-auto text-center' placeholder='Busca un colaborador'></input>
+        <input className='ms-auto text-center' placeholder='Busca un colaborador' onChange={handleInputFilter}></input>
       </div>
       <div className='container my-5'>
         <form onSubmit={handleSubmit}>
@@ -51,7 +56,15 @@ function App() {
         <h2>Listado de colaboradores</h2>
         <ul>
           {
-            colaboradores.map((colaborador, index) => 
+            colaboradores.filter((colaborador) => {
+              if (input_filter === '') {
+                return colaborador;
+              } else if (colaborador.nombre.toLocaleLowerCase().includes(input_filter.toLocaleLowerCase())) {
+                  return colaborador;                               
+              } else {
+                return '';
+              }
+            }).map((colaborador, index) => 
             {return(<li key={index}>{colaborador.nombre} - {colaborador.correo}</li>)})
           }
         </ul>
