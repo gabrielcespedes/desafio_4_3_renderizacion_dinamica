@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { useState } from 'react';
 
-import { BaseColaboradores } from './BaseColaboradores';
+import { BaseColaboradores } from './data/BaseColaboradores';
 
 //ANOTAR
 
